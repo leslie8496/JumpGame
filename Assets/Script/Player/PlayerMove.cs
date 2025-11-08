@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Rigidbody2D rd;
+    public Rigidbody2D rb;
     public float moveSpeed;
 
     public float MoveController;
@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     {
         moveSpeed = 5f;
         anim = GetComponent<Animator>();
-        rd = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -39,12 +39,12 @@ public class PlayerMove : MonoBehaviour
     private void Run4Move()
     {
         //左右方向跑
-        if (rd.velocity.x > 0)
+        if (rb.velocity.x > 0)
         {
             transform.localScale = new Vector2(1, 1);
         }
 
-        if (rd.velocity.x < 0)
+        if (rb.velocity.x < 0)
         {
             transform.localScale = new Vector2(-1, 1);
         }
@@ -53,6 +53,6 @@ public class PlayerMove : MonoBehaviour
     private void XMove()
     {
         MoveController = Input.GetAxisRaw("Horizontal");
-        rd.velocity = new Vector2(moveSpeed * MoveController, rd.velocity.y);
+        rb.velocity = new Vector2(moveSpeed * MoveController, rb.velocity.y);
     }
 }

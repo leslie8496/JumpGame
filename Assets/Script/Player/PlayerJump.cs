@@ -7,7 +7,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private float isGroundCheck;
 
-    public Rigidbody2D rd;
+    public Rigidbody2D rb;
     private bool isJump;
     public float jumpSpeed;
     private bool isGround;
@@ -19,10 +19,11 @@ public class PlayerJump : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rd = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         jumpSpeed = 5f;
         isGroundCheck = 1.1f;
+        GroundLayer.value = 5;
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class PlayerJump : MonoBehaviour
     private void JumpAnimationController()
     {
         //是否跳跃
-        if (rd.velocity.y > 0.3f)
+        if (rb.velocity.y > 0.3f)
         {
             isJump = true;
         }
@@ -61,7 +62,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGround)
         {
-            rd.velocity = new Vector2(rd.velocity.x, jumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
 

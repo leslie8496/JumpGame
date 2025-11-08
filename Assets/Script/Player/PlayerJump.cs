@@ -13,6 +13,8 @@ public class PlayerJump : MonoBehaviour
     private bool isGround;
 
     private Animator anim;
+    
+   
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +22,28 @@ public class PlayerJump : MonoBehaviour
         rd = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         jumpSpeed = 5f;
+        isGroundCheck = 1.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && isGround)
-        {
-            rd.velocity = new Vector2(rd.velocity.x, jumpSpeed);
-        }
+        OnJump();
 
+        JumpAnimationController();
+
+        IsGroundAni();
+    }
+
+    private void IsGroundAni()
+    {
+        //是否在地面
+        isGround = Physics2D.Raycast(transform.position, Vector2.down, isGroundCheck, GroundLayer);
+        anim.SetBool("isGround", isGround);
+    }
+
+    private void JumpAnimationController()
+    {
         //是否跳跃
         if (rd.velocity.y > 0.3f)
         {
@@ -41,10 +55,14 @@ public class PlayerJump : MonoBehaviour
         }
 
         anim.SetBool("isJump", isJump);
+    }
 
-        //是否在地面
-        isGround = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, GroundLayer);
-        anim.SetBool("isGround", isGround);
+    private void OnJump()
+    {
+        if (Input.GetButtonDown("Jump") && isGround)
+        {
+            rd.velocity = new Vector2(rd.velocity.x, jumpSpeed);
+        }
     }
 
     private void OnDrawGizmos()

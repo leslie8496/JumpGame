@@ -23,12 +23,21 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveController = Input.GetAxisRaw("Horizontal");
-        rd.velocity = new Vector2(moveSpeed * MoveController, rd.velocity.y);
+        XMove();
+        Run4Move();
+        AnimatorlController();
+    }
 
+    private void AnimatorlController()
+    {
         //是否正在跑步
         isRunScript = MoveController != 0;
         anim.SetBool("isRun", isRunScript);
+        
+    }
+
+    private void Run4Move()
+    {
         //左右方向跑
         if (rd.velocity.x > 0)
         {
@@ -39,5 +48,11 @@ public class PlayerMove : MonoBehaviour
         {
             transform.localScale = new Vector2(-1, 1);
         }
+    }
+
+    private void XMove()
+    {
+        MoveController = Input.GetAxisRaw("Horizontal");
+        rd.velocity = new Vector2(moveSpeed * MoveController, rd.velocity.y);
     }
 }

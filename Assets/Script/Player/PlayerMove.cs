@@ -12,18 +12,25 @@ public class PlayerMove : MonoBehaviour
     public float MoveController;
     private bool isRunScript;
     private Animator anim;
+    private PlayerJump jumpScript;
+    public AudioSource moveSound;
 
     void Start()
     {
         moveSpeed = 5f;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        jumpScript = GetComponent<PlayerJump>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        XMove();
+        if (!jumpScript.wallJumping)
+        {
+            XMove();
+        }
+        
         Run4Move();
         AnimatorlController();
     }
@@ -33,7 +40,6 @@ public class PlayerMove : MonoBehaviour
         //是否正在跑步
         isRunScript = MoveController != 0;
         anim.SetBool("isRun", isRunScript);
-        
     }
 
     private void Run4Move()
@@ -53,6 +59,18 @@ public class PlayerMove : MonoBehaviour
     private void XMove()
     {
         MoveController = Input.GetAxisRaw("Horizontal");
+        if (MoveController != 0 && jumpScript.isGround)
+        {
+            if (!moveSound.isPlaying)
+            {
+                moveSound.Play();
+            }
+        }
+        else
+        {
+            moveSound.Stop();
+        }
+
         rb.velocity = new Vector2(moveSpeed * MoveController, rb.velocity.y);
     }
 }

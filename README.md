@@ -33,18 +33,3 @@
 - **版本控制:** Git
 
 ---
-
-### 如何运行 (How to Run)
-
-**方式一：WebGL在线试玩 (推荐)**
-
-> 点击这里在线试玩  <!-- 如果你部署了WebGL，就把链接放这里 -->
->
-
-**方式二：下载PC版**
-
-1. 前往 [Releases页面](https://www.notion.so/%E4%BD%A0%E7%9A%84Releases%E9%A1%B5%E9%9D%A2%E9%93%BE%E6%8E%A5) 下载最新的 `Pixel-Adventure-PC.zip` 文件。
-2. 解压文件。
-3. 双击运行 `Pixel Adventure.exe` 即可开始游戏。
-
----

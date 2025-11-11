@@ -37,7 +37,7 @@
 游戏已部署至线上，点击下方链接即可在浏览器中直接体验！
 <br>
 
-[![在线试玩 (Play Online)](https://img.shields.io/badge/Play-Online-orange?style=for-the-badge&logo=unity)](https://leslie8496.github.io/JumpDemo/)
+[![在线试玩 (Play Online)](https://img.shields.io/badge/Play-Online-orange?style=for-the-badge&logo=unity)](https://leslie8496.github.io/JumpGame/)
 
 <br>
 
@@ -53,4 +53,4 @@
 <br>
 > **注意:** 如果下载速度慢，你可能需要使用科学上网工具。
 >
-> 如果你对项目感兴趣，欢迎查看我的 [已知问题列表与未来计划](#已知问题-known-issues--未来计划-future-plans)！
+> 如果你对项目感兴趣，欢迎查看我的 [已知问题列表与未来计划](docs/FUTURE_PLANS.md)！
